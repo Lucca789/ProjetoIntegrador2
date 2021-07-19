@@ -9,25 +9,26 @@
 
 <ion-content>
 <ion-item>
+  <ion-label position="floating">Nome</ion-label>
+  <ion-input type="text" [(ngModel)]="nome"></ion-input>
+</ion-item>
+
+<ion-item>
   <ion-label position="floating">Email</ion-label>
-  <ion-input></ion-input>
+  <ion-input type="text" [(ngModel)]="email"></ion-input>
 </ion-item>
 
 <ion-item>
-  <ion-label position="floating">Usuário</ion-label> 
-  <ion-input></ion-input>
+  <ion-label position="password">Senha</ion-label>
+  <ion-input type="text" [(ngModel)]="senha"></ion-input>
 </ion-item>
 
 <ion-item>
-  <ion-label position="floating">Senha</ion-label>
-  <ion-input></ion-input>
+  <ion-label position="password">Confirmar Senha</ion-label>
+  <ion-input type="text" [(ngModel)]="confirmarsenha"></ion-input>
 </ion-item>
 
-<ion-item>
-  <ion-label position="floating">Confirma Senha</ion-label>
-  <ion-input></ion-input>
-</ion-item>
 
-<ion-button expand="block" (click)="login()">Cadastrar</ion-button>
+<ion-button expand="block" (click)="login()">Cadastrar</ion-button>nar
 
 </ion-content>

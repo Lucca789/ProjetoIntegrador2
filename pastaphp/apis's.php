@@ -6,7 +6,7 @@ $postjson = json_decode(file_get_contents('php://input'), true);
 //var_dump($postjson);
  
 if($postjson['requisicao']=='add'){
- $query = $pdo->prepare("INSERT INTO usuarios SET nome=:nome, usuario=:usuario, senha=:senha, senha_original=:senha_original");
+ $query = $pdo->prepare("INSERT INTO usuarios SET nome=:nome, email=:email, senha=:senha, senha_original=:senha_original");
  $query->bindValue(":nome",$postjson['nome']);
  $query->bindValue(":usuario",$postjson['usuario']);
  $query->bindValue(":senha",md5($postjson['senha']));
@@ -23,7 +23,7 @@ if($postjson['requisicao']=='add'){
  echo $result;
 //
 }//final da requisição ADD
-else if($postjson['requisicao']=='listar'){
+/*else if($postjson['requisicao']=='listar'){
  if($postjson['nome'] == ''){ 
  $query = $pdo->query("SELECT * FROM usuarios order by id desc limit $postjson[start], $postjson[limit]");
  }else{
@@ -51,8 +51,9 @@ else if($postjson['requisicao']=='listar'){
  }
  echo $result;
  
-}//final da requisição LISTAR
+}//final da requisição LISTAR*/
 elseif($postjson['requisicao']=='editar'){
+$query
 //
 }//final da requisição EDITAR
 elseif($postjson['requisicao']=='atualizar'){
