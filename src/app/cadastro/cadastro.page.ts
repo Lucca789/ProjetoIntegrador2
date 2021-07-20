@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from 'src/services/post.service';
-import { threadId } from 'worker_threads';
+//import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,7 +13,7 @@ export class CadastroPage implements OnInit {
   nome: string = "";
   email: string = "";
   senha: string = "";
-  confirmarsenha: string = "";
+ cpf: string = "";
 
 
   constructor(private service :PostService, private router: Router) { }
@@ -28,7 +28,7 @@ export class CadastroPage implements OnInit {
       nome: this.nome,
       email: this.email,
       senha: this.senha,
-      confirmarsenha: this.confirmarsenha
+      cpf: this.cpf
     };
     this.service.dadosApi(dados,'api.php').subscribe(data =>{
       if (data['success']){

@@ -6,11 +6,11 @@ $postjson = json_decode(file_get_contents('php://input'), true);
 //var_dump($postjson);
  
 if($postjson['requisicao']=='add'){
- $query = $pdo->prepare("INSERT INTO usuarios SET nome=:nome, email=:email, senha=:senha, senha_original=:senha_original");
+ $query = $pdo->prepare("INSERT INTO cliente SET nome=:nome, email=:email, senha=:senha, cpf=:cpf");
  $query->bindValue(":nome",$postjson['nome']);
- $query->bindValue(":usuario",$postjson['usuario']);
+ $query->bindValue(":email",$postjson['email']);
  $query->bindValue(":senha",md5($postjson['senha']));
- $query->bindValue(":senha_original",$postjson['senha']);
+ $query->bindValue(":cpf",$postjson['cpf']);
  
  $query->execute();
  $id = $pdo->lastInsertId();
@@ -63,24 +63,24 @@ elseif($postjson['requisicao']=='excluir'){
 //
 }//final da requisição EXCLUIR
 elseif($postjson['requisicao']=='login'){
- $query = $pdo->query("SELECT * FROM usuarios where usuario = '$postjson[usuario]' and senha = md5('$postjson[senha]')");
+ $query = $pdo->query("SELECT * FROM cliente where cliente = '$postjson[cliente]' and senha = md5('$postjson[senha]')");
  $res = $query->fetchAll(PDO::FETCH_ASSOC);
  for ($i=0; $i < count($res); $i++) { 
  foreach ($res[$i] as $key => $value) { 
  }
  $dados = array(
- 'id'=> $res[$i]['id'],
- 'nome'=> $res[$i]['nome'],
- 'usuario'=> $res[$i]['usuario'],
+ //'id'=> $res[$i]['id'],
+ //'nome'=> $res[$i]['nome'],
+ 'email'=> $res[$i]['email'],
  'senha'=> $res[$i]['senha'],
- 'senha_original'=> $res[$i]['senha_original'],
+ //'cpf'=> $res[$i]['cpf'],
 
  );
  } 
  if (count($res) > 0){
  $result = json_encode(array('success'=>true, 'result'=>$dados));
  }else{
- $result = json_encode(array('success'=>false, 'msg'=>'Dados Incorretos para Usuaário na API TI89'));
+ $result = json_encode(array('success'=>false, 'msg'=>'Dados Incorretos para Usuario'));
  
  }
  echo $result;

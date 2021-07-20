@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cadastro</ion-title>
+  <ion-toolbar color = primary>
+    <ion-title>Cadastro</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -19,16 +19,17 @@
 </ion-item>
 
 <ion-item>
-  <ion-label position="password">Senha</ion-label>
+  <ion-label position="floating">Senha</ion-label>
   <ion-input type="text" [(ngModel)]="senha"></ion-input>
 </ion-item>
 
+
 <ion-item>
-  <ion-label position="password">Confirmar Senha</ion-label>
-  <ion-input type="text" [(ngModel)]="confirmarsenha"></ion-input>
+  <ion-label position="floating">CPF</ion-label>
+  <ion-input type="text" [(ngModel)]="cpf"></ion-input>
 </ion-item>
 
 
-<ion-button expand="block" (click)="login()">Cadastrar</ion-button>nar
+<ion-button expand="block" (click)="login()">Cadastrar</ion-button>
 
 </ion-content>
