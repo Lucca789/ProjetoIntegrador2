@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color = primary>
+  <ion-toolbar color=primary>
     <ion-title>Cadastro</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -8,28 +8,29 @@
 </ion-header>
 
 <ion-content>
-<ion-item>
-  <ion-label position="floating">Nome</ion-label>
-  <ion-input type="text" [(ngModel)]="nome"></ion-input>
-</ion-item>
+  <form #f1= "ngForm" (ngSubmit)="enviando(f1)">
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input ngModel name="nome"></ion-input>
+  </ion-item>
 
-<ion-item>
-  <ion-label position="floating">Email</ion-label>
-  <ion-input type="text" [(ngModel)]="email"></ion-input>
-</ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input  ngModel name="email"></ion-input>
+  </ion-item>
 
-<ion-item>
-  <ion-label position="floating">Senha</ion-label>
-  <ion-input type="text" [(ngModel)]="senha"></ion-input>
-</ion-item>
-
-
-<ion-item>
-  <ion-label position="floating">CPF</ion-label>
-  <ion-input type="text" [(ngModel)]="cpf"></ion-input>
-</ion-item>
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input  ngModel name="senha"></ion-input>
+  </ion-item>
 
 
-<ion-button expand="block" (click)="login()">Cadastrar</ion-button>
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input ngModel name="cpf"></ion-input>
+  </ion-item>
 
+
+  <ion-button fill="outline" expand="block" type="submit" (click)="login()">Cadastrar</ion-button>
+ </form>
 </ion-content>

@@ -1,4 +1,3 @@
-import { PostService } from "./../services/post.service";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,6 +8,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { Folder } from './folder/folder.page';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,10 +20,10 @@ import { HttpClientModule } from "@angular/common/http";
     IonicModule.forRoot(),
      AppRoutingModule,
      HttpClientModule,
-
+     FormsModule
     ],
   providers: [
-    PostService,
+    Folder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { PostService } from 'src/services/post.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,7 +9,7 @@ import { PostService } from 'src/services/post.service';
 export class LoginPage implements OnInit {
   usuario: string = "";
   senha: string = "";
-  constructor(private router: Router, private blockMenu: MenuController, private nameless: Router, private service: PostService) { }
+  constructor(private router: Router, private blockMenu: MenuController, private nameless: Router) { }
 
   ngOnInit() {
     this.blockMenu.enable(false)
@@ -32,12 +30,5 @@ export class LoginPage implements OnInit {
       senha: this.senha
 
     }
-    this.service.dadosApi(dados, 'api.php').subscribe(data => {
-      if (data['success']) {
-        console.log(data['result']);
-        this.router.navigate(['folder/inbox']);
-      }
-    });
-
   }
 }

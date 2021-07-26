@@ -1,28 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Folders, FolderService } from 'src/services/Folders.service';
 
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
 })
-export class FolderPage implements OnInit {
-  //public folder: string;
+export class Folder implements OnInit {
+folder: Folders [];
 
-  constructor(private activatedRoute: ActivatedRoute,private router: Router, private router1: Router) { }
+  constructor(private service:FolderService) { }
 
   ngOnInit() {
-   // this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-  }
-
-  folder()
-  {
-    this.router1.navigate(["/folder"])
-  }
-
-  logout(){
-    this.router.navigate(["/login"])
-    
-  }
-  
+    this.service.getAll().subscribe(Response =>{
+      this.folder = Response;
+    })
+  }  
 }
