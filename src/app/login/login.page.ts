@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
+import { ModalclientePage } from '../modalcliente/modalcliente.page';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,14 +10,17 @@ import { MenuController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   usuario: string = "";
   senha: string = "";
-  constructor(private router: Router, private blockMenu: MenuController, private nameless: Router) { }
+  constructor(private router: Router, private blockMenu: MenuController, private nameless: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.blockMenu.enable(false)
   }
-  cadastrar() {
-    this.router.navigate(["/cadastro"]);
+  novoCliente() {
+    this.modalCtrl.create({
+      component: ModalclientePage
+    }).then(modal => modal.present());
   }
+
   entrar() {
     this.nameless.navigate(["/folder"])
 

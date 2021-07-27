@@ -15,10 +15,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  },
+ 
   {
     path: 'pedidos',
     loadChildren: () => import('./pedidos/pedidos.module').then( m => m.PedidosPageModule)
@@ -36,6 +33,17 @@ const routes: Routes = [
     path: 'logout',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  
+
+  {
+    path: 'modalcliente',
+    loadChildren: () => import('./modalcliente/modalcliente.module').then( m => m.ModalclientePageModule)
+  },
+
+ 
+
+ 
+  
   
 ];
 
