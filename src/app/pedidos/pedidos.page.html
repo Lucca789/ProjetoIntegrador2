@@ -9,6 +9,7 @@
 </ion-header>
 
 <ion-content>
+  <form #g="ngForm" (ngSubmit)="enviando(g)">
   <ion-item>
   <ion-label>Tipos de Pedidos</ion-label>
   <ion-select placeholder="Tipos de Pedidos" >  
@@ -17,22 +18,22 @@
     <ion-select-option value="Redes">Redes</ion-select-option>
     <ion-select-option value="Segurança">Segurança</ion-select-option>
   </ion-select>
+  <value ngModel name="tipoPedido"></value>
 </ion-item>
 <ion-item>
 
   <ion-label position="floating">O que houve?</ion-label>
-<ion-input type=text></ion-input>
+<ion-input type=text ngModel name="Descricao" ></ion-input>
   
 </ion-item>
 <ion-item>
   <ion-label>Empresas</ion-label>
   <ion-select placeholder="Empresa Necessária">
-    <ion-select-option value="1"></ion-select-option>
-    <ion-select-option value="2"></ion-select-option>
-    <ion-select-option value="3"></ion-select-option>
-    <ion-select-option value="4"></ion-select-option>
-    
-  </ion-select>
-</ion-item>
+     <ion-select-option *ngFor="let f of folder">{{f.Nome}}</ion-select-option>
+     <value ngModel name="Empresa"></value>
+    </ion-select>
+</ion-item> 
+<ion-button fill="outline" expand="block" type="submit">Enviar</ion-button> 
+</form>
 
 </ion-content>

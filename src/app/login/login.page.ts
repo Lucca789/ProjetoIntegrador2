@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, ModalController } from '@ionic/angular';
+import { Cadastro } from 'src/services/Clientes.service';
 import { ModalclientePage } from '../modalcliente/modalcliente.page';
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ModalclientePage } from '../modalcliente/modalcliente.page';
 export class LoginPage implements OnInit {
   usuario: string = "";
   senha: string = "";
+  cadrasto:Cadastro[];
   constructor(private router: Router, private blockMenu: MenuController, private nameless: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
@@ -18,7 +20,12 @@ export class LoginPage implements OnInit {
   novoCliente() {
     this.modalCtrl.create({
       component: ModalclientePage
-    }).then(modal => modal.present());
+      }).then(modal => {
+        modal.present();
+        return modal.onDidDismiss();
+      }).then(({data}) =>{
+        console.log(data);
+      })
   }
 
   entrar() {

@@ -9,16 +9,6 @@ export interface Folders{
   CNPJ:string
 }
 
-export interface Cadastro{
-
-  id:string 
-  Nome:string
-  Email:string 
-  Senha:string
-  Cpf:string
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -30,8 +20,4 @@ constructor(private http: HttpClient) { }
   getAll(){
     return this.http.get<[Folders]>(this.url);
  }
-  create(cadastro: Cadastro){
-    console.log(cadastro)
-    return this.http.post(this.url, cadastro)
-  }
 }
